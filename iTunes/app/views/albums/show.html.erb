@@ -1,0 +1,63 @@
+<p>
+  <strong>Title:</strong>
+  <%= @album.title %>
+</p>
+ 
+<p>
+  <strong>Artist:</strong>
+  <%= @album.artist %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @album.year %>
+</p>
+ 
+<p>
+  <strong>Album Art:</strong>
+  <%= @album.album_art %>
+</p>
+
+<%# List Songs %>
+<h3>Track Listing:</h3>
+<table>
+  <tr>
+    <th>Song Title</th>
+    <th>Genre</th>
+    <th>Duration</th>
+  </tr>
+ 
+<% @album.songs.each do |song|%>
+    <tr>
+        <td> <%= song.name %> </td>
+        <td> <%= song.genre %> </td>
+        <td> <%= song.duration %> </td>
+    </tr>
+<% end %>
+</table>
+
+
+
+<h2>Add a song:</h2>
+<%= form_with(model: [ @album, @album.songs.build ], local: true) do |form| %>
+      <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>
+
+    <p>
+    <%= form.label :genre %><br>
+    <%= form.text_field :genre %>
+  </p>
+
+    <p>
+    <%= form.label :duration %><br>
+    <%= form.text_field :duration %>
+  </p>
+
+    <%= form.submit %>
+  </p>
+<% end %>
+
+
+<%= link_to 'Return to Albums', albums_path %>

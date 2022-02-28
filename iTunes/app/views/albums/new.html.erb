@@ -1,0 +1,27 @@
+<h1>Add an Album</h1>
+
+<%= form_with scope: :album, url: albums_path, local: true do |form| %>
+<p>
+    <%= form.label:title  %><br>
+    <%= form.text_field :title %>
+</p>
+
+<p>
+    <%= form.label :artist %><br>
+    <%= form.text_field :artist %>
+</p>
+
+    <p>
+    <%= form.label :year %><br>
+    <%= form.text_field :year %>
+    </p>
+    
+    <p>
+    <%= form.label :album_art %><br>
+    <%= form.text_field :album_art %>
+    </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
